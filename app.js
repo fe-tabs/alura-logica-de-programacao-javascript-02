@@ -19,6 +19,8 @@ function checkGuess() {
       Você acertou o número secreto: 
       ${secretNumber} em ${guesses} tentativa${(guesses > 1) ? 's' : ''}!
     `;
+
+    document.getElementById('reiniciar').removeAttribute('disabled');
   } else {
     if (guess > secretNumber) {
       paragraph.innerHTML = `Você errou! O número secreto é menor que ${guess}!`;
@@ -28,4 +30,13 @@ function checkGuess() {
 
     guesses++;
   }
+
+  document.querySelector('input').value = '';
+}
+
+function startNewGame() {
+  guesses = 1;
+  secretNumber = generateRandomNumber();
+  paragraph.innerHTML = "Escolha um número entre 1 e 10: ";
+  document.getElementById('reiniciar').setAttribute('disabled', true);
 }
