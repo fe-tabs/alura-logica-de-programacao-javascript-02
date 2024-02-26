@@ -1,3 +1,4 @@
+let guesses = 1;
 let secretNumber = generateRandomNumber();
 
 let title = document.querySelector('h1');
@@ -14,12 +15,17 @@ function checkGuess() {
   let guess = document.querySelector('input').value;
 
   if (guess == secretNumber) {
-    paragraph.innerHTML = `Você acertou o número secreto: ${secretNumber}!`;
+    paragraph.innerHTML = `
+      Você acertou o número secreto: 
+      ${secretNumber} em ${guesses} tentativa${(guesses > 1) ? 's' : ''}!
+    `;
   } else {
     if (guess > secretNumber) {
       paragraph.innerHTML = `Você errou! O número secreto é menor que ${guess}!`;
     } else {
       paragraph.innerHTML = `Você errou! O número secreto é maior que ${guess}!`;
     }
+
+    guesses++;
   }
 }
