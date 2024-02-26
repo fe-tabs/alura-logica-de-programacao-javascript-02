@@ -1,3 +1,5 @@
+let generatedSecretNumbers = [];
+let maxNumber = 100;
 let guesses = 1;
 let secretNumber = generateRandomNumber();
 
@@ -5,10 +7,21 @@ let title = document.querySelector('h1');
 title.innerHTML = "Jogo do Número Secreto";
 
 let paragraph = document.querySelector('p');
-paragraph.innerHTML = "Escolha um número entre 1 e 10: ";
+paragraph.innerHTML = `Escolha um número entre 1 e ${maxNumber}: `;
 
 function generateRandomNumber() {
-  return parseInt(Math.random() * 10) + 1;
+  let generatedNumber = parseInt(Math.random() * maxNumber) + 1;
+
+  if (generatedSecretNumbers.length == maxNumber) {
+    generatedSecretNumbers = [];
+  }
+
+  if (generatedSecretNumbers.includes(generatedNumber)) {
+    return generateRandomNumber();
+  } else {
+    generatedSecretNumbers.push(generatedNumber);
+    return generatedNumber;
+  }
 }
 
 function checkGuess() {
