@@ -4,7 +4,7 @@ let guesses = 1;
 let secretNumber = generateRandomNumber();
 
 changeElementContent('h1', "Jogo do Número Secreto");
-changeElementContent('p', `Escolha um número entre 1 e ${maxNumber}: `)
+changeElementContent('p', `Escolha um número entre 1 e ${maxNumber}: `);
 
 function generateRandomNumber() {
   let generatedNumber = parseInt(Math.random() * maxNumber) + 1;
@@ -58,6 +58,6 @@ function checkGuess() {
 function startNewGame() {
   guesses = 1;
   secretNumber = generateRandomNumber();
-  changeElementContent('p', "Escolha um número entre 1 e 10: ");
+  changeElementContent('p', `Escolha um número entre 1 e ${maxNumber}: `);
   document.getElementById('reiniciar').setAttribute('disabled', true);
 }
